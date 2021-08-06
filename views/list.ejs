@@ -5,14 +5,17 @@
 
 <div class="box">
   <% for(let i=0;i<addTask.length;i++) { %>
+    <form class="" action="/delete" method="post">
   <div class="item">
-    <input type="checkbox">
-    <p><%= addTask[i] %></p>
+    <input type="checkbox" name="checkbox" value="<%=addTask[i]._id%>" onchange="this.form.submit()">
+    <p><%= addTask[i].name %></p>
   </div>
+  <input type="hidden" name="listName" value="<%=listTitle%>"></input>
+  </form>
   <% } %>
 
   <form class="item" action="/" method="post">
     <input type="text" name="newTask" placeholder="Add new task" autocomplete="off">
-    <button type="submit" name="list" value=<%= listTitle %>>+</button>
+    <button type="submit" name="list" value="<%=listTitle%>">+</button>
   </form>
   <%- include('footer'); -%>
